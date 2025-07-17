@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Device Info Collector</title>
 </head>
 <body>
-    
+  <h1>Checking Device Info...</h1>
+  <script>
+    const deviceInfo = {
+      userAgent: navigator.userAgent,
+      platform: navigator.platform,
+      language: navigator.language,
+      screen: {
+        width: screen.width,
+        height: screen.height,
+        pixelDepth: screen.pixelDepth
+      },
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+    };
+
+    console.log("Device Info Collected:", deviceInfo);
+
+    // Send to your server or Supabase here
+    // fetch("https://your-server.com/collect", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(deviceInfo)
+    // });
+
+    alert("Device Info: \n" + JSON.stringify(deviceInfo, null, 2));
+  </script>
 </body>
 </html>
